@@ -1,18 +1,17 @@
 "use client"
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
 // import { motion, AnimatePresence } from 'framer-motion'
-import { Sun, Moon } from 'lucide-react'
-import { useTheme } from 'next-themes'
 import { Button } from '@/components/ui/button'
 
 export default function Navigation() {
   const pathname = usePathname()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const { theme, setTheme } = useTheme()
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,8 +34,8 @@ export default function Navigation() {
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled 
-          ? 'bg-background/80 backdrop-blur-md border-b border-border shadow-lg' 
-          : 'bg-transparent'
+          ? 'bg-black/90 backdrop-blur-md border-b border-gray-700 shadow-lg' 
+          : 'bg-black/80'
       }`}
     >
       <div className="container-custom">
@@ -44,46 +43,56 @@ export default function Navigation() {
           <div 
             className="flex items-center space-x-8"
           >
-            <Link href="/" className="text-xl font-bold text-gradient">
-              ✦ Aisha Cares Initiative ✦
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/images/logo-header.svg"
+                alt="Aisha Cares Initiative Logo"
+                width={700}
+                height={210}
+                className="h-32 w-auto"
+                priority
+              />
             </Link>
           </div>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
+          <div className="hidden md:flex items-center space-x-4">
+            {navItems.slice(0, -1).map((item) => (
               <div
                 key={item.href}
               >
                 <Link
                   href={item.href}
-                  className={`relative px-4 py-2 rounded-lg transition-all duration-300 ${
+                  className={`relative px-3 py-1.5 text-sm rounded-lg transition-all duration-300 ${
                     pathname === item.href
-                      ? 'text-primary font-semibold'
-                      : 'text-foreground hover:text-primary'
+                      ? 'text-white font-semibold'
+                      : 'text-gray-300 hover:text-white'
                   }`}
                 >
                   {item.label}
                   {pathname === item.href && (
                     <div
-                      className="absolute inset-0 bg-primary/10 rounded-lg -z-10"
+                      className="absolute inset-0 bg-white/10 rounded-lg -z-10"
                     />
                   )}
                 </Link>
               </div>
             ))}
+            {/* Contact Button */}
+            <div>
+              <Link
+                href="/contact"
+                className={`relative px-4 py-2 text-sm rounded-lg transition-all duration-300 ${
+                  pathname === '/contact'
+                    ? 'bg-blue-600 text-white font-semibold'
+                    : 'bg-blue-500 text-white hover:bg-blue-600'
+                }`}
+              >
+                Contact
+              </Link>
+            </div>
             
-            {/* Theme Toggle */}
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="ml-4"
-            >
-              <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-              <span className="sr-only">Toggle theme</span>
-            </Button>
+
           </div>
           
           {/* Mobile menu button */}
@@ -95,17 +104,17 @@ export default function Navigation() {
               className="w-6 h-6 flex flex-col justify-center items-center"
             >
               <span
-                className={`w-6 h-0.5 bg-foreground block transition-all duration-300 ${
+                className={`w-6 h-0.5 bg-white block transition-all duration-300 ${
                   isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''
                 }`}
               />
               <span
-                className={`w-6 h-0.5 bg-foreground block mt-1 transition-all duration-300 ${
+                className={`w-6 h-0.5 bg-white block mt-1 transition-all duration-300 ${
                   isMobileMenuOpen ? 'opacity-0' : ''
                 }`}
               />
               <span
-                className={`w-6 h-0.5 bg-foreground block mt-1 transition-all duration-300 ${
+                className={`w-6 h-0.5 bg-white block mt-1 transition-all duration-300 ${
                   isMobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''
                 }`}
               />
@@ -118,10 +127,10 @@ export default function Navigation() {
           <div
             className="md:hidden border-t border-border overflow-hidden"
           >
-            <div 
+                        <div 
               className="py-6 space-y-2"
             >
-              {navItems.map((item) => (
+              {navItems.slice(0, -1).map((item) => (
                 <div
                   key={item.href}
                 >
@@ -129,8 +138,8 @@ export default function Navigation() {
                     href={item.href}
                     className={`block px-6 py-3 rounded-xl transition-all duration-300 ${
                       pathname === item.href
-                        ? 'text-primary font-semibold bg-primary/10'
-                        : 'text-foreground hover:text-primary hover:bg-accent'
+                        ? 'text-white font-semibold bg-white/10'
+                        : 'text-gray-300 hover:text-white hover:bg-gray-800'
                     }`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
@@ -138,19 +147,22 @@ export default function Navigation() {
                   </Link>
                 </div>
               ))}
-              
-              {/* Mobile Theme Toggle */}
-              <div className="px-6 py-3">
-                <Button
-                  variant="outline"
-                  onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                  className="w-full justify-start"
+              {/* Mobile Contact Button */}
+              <div>
+                <Link
+                  href="/contact"
+                  className={`block px-6 py-3 rounded-xl transition-all duration-300 ${
+                    pathname === '/contact'
+                      ? 'bg-blue-600 text-white font-semibold'
+                      : 'bg-blue-500 text-white hover:bg-blue-600'
+                  }`}
+                  onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <Sun className="h-4 w-4 mr-2 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                  <Moon className="absolute h-4 w-4 mr-2 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-                  Toggle theme
-                </Button>
+                  Contact
+                </Link>
               </div>
+              
+
             </div>
           </div>
         )}

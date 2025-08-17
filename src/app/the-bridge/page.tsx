@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 // import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -117,7 +118,14 @@ export default function TheBridge() {
               <div className="relative w-80 h-80 mx-auto">
                 <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary/60 rounded-full blur-3xl opacity-20"></div>
                 <div className="relative w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full flex items-center justify-center">
-                  <div className="text-6xl">🌉</div>
+                  <Image
+                    src="/images/aisha-mission.png"
+                    alt="The Bridge Mission"
+                    width={300}
+                    height={300}
+                    className="w-3/4 h-3/4 object-cover rounded-full"
+                    priority
+                  />
                 </div>
               </div>
             </div>

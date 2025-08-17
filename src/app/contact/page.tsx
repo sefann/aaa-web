@@ -3,7 +3,7 @@
 import { useState } from 'react'
 
 // import { motion } from 'framer-motion'
-import { Send, Linkedin, Twitter, Instagram } from 'lucide-react'
+import { Send, Linkedin, Twitter, Instagram, Mail, MapPin, Clock } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { profile } from '@/data/profile'
@@ -49,19 +49,19 @@ export default function Contact() {
       value: profile.email,
       link: `mailto:${profile.email}`,
       description: "Send me an email anytime",
-      icon: "📧"
+      icon: Mail
     },
     {
       title: "Location",
-      value: profile.location,
+      value: "T007, Plot1248 Orji Uzor Kalu Close, Mabushi, FCT Abuja",
       description: "Based in Abuja, Nigeria",
-      icon: "📍"
+      icon: MapPin
     },
     {
       title: "Response Time",
       value: "24-48 hours",
       description: "I typically respond within a day",
-      icon: "⏰"
+      icon: Clock
     }
   ]
 
@@ -208,7 +208,7 @@ export default function Contact() {
                       <CardContent className="pt-6">
                         <div className="flex items-start space-x-4">
                           <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                            <div className="text-primary">{info.icon}</div>
+                            <info.icon className="w-6 h-6 text-primary" />
                           </div>
                           <div className="flex-1">
                             <h3 className="font-semibold mb-1">{info.title}</h3>

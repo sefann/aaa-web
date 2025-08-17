@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { profile } from '@/data/profile'
 import { projects } from '@/data/projects'
+import ImageSlider from '@/components/ImageSlider'
 
 export default function Home() {
   const featuredProjects = projects.filter(project => project.featured).slice(0, 3)
@@ -19,12 +20,14 @@ export default function Home() {
         <div className="container-custom relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h1
-                className="heading-primary mb-6"
-              >
-                Welcome to the digital home of{' '}
-                <span className="text-gradient">{profile.name}</span>
-              </h1>
+              <div className="mb-6">
+                <p className="text-5xl text-muted-foreground mb-3">
+                  Welcome to the digital home of
+                </p>
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+                  <span className="text-gradient">{profile.name}</span>
+                </h1>
+              </div>
               
               <p
                 className="text-xl text-muted-foreground mb-8 leading-relaxed"
@@ -42,27 +45,26 @@ export default function Home() {
                   </Link>
                 </Button>
                 <Button variant="outline" size="lg" asChild>
-                  <Link href={profile.resume} target="_blank">
-                    <Download className="mr-2 h-4 w-4" />
-                    Download Resume
+                  <Link href="/the-bridge">
+                    The Bridge
+                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </Button>
               </div>
             </div>
 
             <div
-              className="relative"
+              className="relative -mt-8"
             >
-              <div className="relative w-80 h-80 mx-auto">
-                <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary/60 rounded-full blur-3xl opacity-20"></div>
-                <div className="relative w-full h-full rounded-full overflow-hidden">
-                  <Image
-                    src={profile.avatar}
-                    alt={profile.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
+              <div className="relative w-full max-w-lg mx-auto">
+                <Image
+                  src="/images/aisha-banner.svg"
+                  alt="Home Banner"
+                  width={500}
+                  height={400}
+                  className="w-full h-auto rounded-lg"
+                  priority
+                />
               </div>
             </div>
           </div>
@@ -109,6 +111,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Image Slider */}
+      <ImageSlider />
 
       {/* Featured Projects */}
       <section className="section-padding">
