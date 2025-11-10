@@ -23,7 +23,7 @@ The Bridge Initiative represents a fundamental shift in how we approach communit
 
 ## What is The Bridge Initiative?
 
-The Bridge Initiative is more than just a program—it's a movement dedicated to unlocking the full potential of communities through practical tools, leadership development, and sustainable practices. Our approach focuses on creating lasting positive change by empowering individuals to become catalysts for transformation within their communities.
+The Bridge Initiative is more than just a program; it's a movement dedicated to unlocking the full potential of communities through practical tools, leadership development, and sustainable practices. Our approach focuses on creating lasting positive change by empowering individuals to become catalysts for transformation within their communities.
 
 ## Key Components
 
@@ -46,7 +46,7 @@ Since its inception, The Bridge Initiative has:
 
 ## Looking Forward
 
-As we continue to expand The Bridge Initiative, our focus remains on creating scalable, replicable models that can be adapted to different communities and contexts. We're committed to building bridges—not just between communities and resources, but between potential and achievement.
+As we continue to expand The Bridge Initiative, our focus remains on creating scalable, replicable models that can be adapted to different communities and contexts. We're committed to building bridges that connect communities and resources with potential and achievement.
 
 The journey of community empowerment is ongoing, and I'm excited to continue leading this important work that creates lasting positive change in communities across Nigeria and beyond.
     `,
@@ -64,7 +64,7 @@ The journey of community empowerment is ongoing, and I'm excited to continue lea
     content: `
 # Advocating for Women's Leadership and Empowerment
 
-Women's leadership is not just about gender equality—it's about unlocking the full potential of our communities. Throughout my career, I've seen how women's unique perspectives, skills, and approaches to leadership can transform communities and create lasting positive change.
+Women's leadership is not just about gender equality; it's about unlocking the full potential of our communities. Throughout my career, I've seen how women's unique perspectives, skills, and approaches to leadership can transform communities and create lasting positive change.
 
 ## The Power of Women's Leadership
 
@@ -124,7 +124,7 @@ Successful humanitarian work requires many of the same skills and approaches as 
 Just as businesses need clear strategies, humanitarian initiatives require well-defined goals, objectives, and implementation plans.
 
 ### 2. Resource Optimization
-Efficient use of resources—whether financial, human, or material—is crucial for maximizing impact.
+Efficient use of resources, whether financial, human, or material, is crucial for maximizing impact.
 
 ### 3. Stakeholder Engagement
 Building strong relationships with all stakeholders ensures long-term success and sustainability.

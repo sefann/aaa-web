@@ -27,6 +27,8 @@ export default function Navigation() {
     { href: '/gallery', label: 'Gallery' },
     { href: '/blog', label: 'Blog' },
     { href: '/the-bridge', label: 'The Bridge' },
+    { href: '/university-tour', label: 'University Tour' },
+    { href: '/shop', label: 'Shop' },
     { href: '/contact', label: 'Contact' }
   ]
 

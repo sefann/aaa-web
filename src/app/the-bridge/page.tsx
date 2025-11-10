@@ -1,131 +1,222 @@
 import Link from 'next/link'
 import Image from 'next/image'
 // import { motion } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
+import {
+  ArrowRight,
+  Sparkles,
+  Users,
+  BookOpen,
+  Handshake,
+  Globe,
+  Heart,
+  Feather,
+  GraduationCap,
+  Stars,
+  Wine,
+  Globe2,
+  Newspaper,
+  CheckCircle2,
+} from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 
 export default function TheBridge() {
-  const pillars = [
+  const purposePoints = [
     {
-      title: "Community Empowerment",
-      description: "Providing communities with the tools, knowledge, and resources they need to thrive and create sustainable change.",
-      icon: "🌟"
+      title: 'Celebrating Passages',
+      description: 'Marking milestones and transformations with intention, dignity, and a shared sense of arrival.',
+      icon: Sparkles,
     },
     {
-      title: "Leadership Development",
-      description: "Training and mentoring community leaders to drive positive transformation and inspire others.",
-      icon: "👥"
+      title: 'Bridging Generations',
+      description: 'Connecting emerging talent with seasoned visionaries for intergenerational learning.',
+      icon: Users,
     },
     {
-      title: "Sustainable Development",
-      description: "Creating lasting impact through environmentally conscious and economically viable initiatives.",
-      icon: "🌱"
+      title: 'Learning & Curiosity',
+      description: 'Turning poignant questions into guided exploration, practical insight, and embodied wisdom.',
+      icon: BookOpen,
     },
     {
-      title: "Collaboration & Partnership",
-      description: "Building bridges between communities, organizations, and stakeholders for collective progress.",
-      icon: "🤝"
-    }
+      title: 'Mentorship & Sponsorship',
+      description: 'Designing structured pathways for guidance, advocacy, and transformational support.',
+      icon: Handshake,
+    },
+    {
+      title: 'Community & Legacy',
+      description: 'Building networks that endure beyond each edition, cultivating lasting legacy and shared memory.',
+      icon: Globe,
+    },
   ]
 
-  const impactStats = [
-    { number: "500+", label: "Community Members Reached" },
-    { number: "25", label: "Leadership Programs Conducted" },
-    { number: "10", label: "Communities Transformed" },
-    { number: "95%", label: "Satisfaction Rate" }
+  const highlights = [
+    {
+      title: 'Bridge Sisters Network',
+      description: 'A lifelong sisterhood and alumni community for continued connection, collaboration, and growth.',
+      icon: Heart,
+    },
+    {
+      title: 'Storytelling Legacy',
+      description: 'Curated narratives and reflections archived for future publications, digital media, and shared memory.',
+      icon: Feather,
+    },
+    {
+      title: 'Mentorship Programs',
+      description: 'Tailored mentorship streams pairing emerging women with leaders across fashion, business, and impact.',
+      icon: GraduationCap,
+    },
+    {
+      title: 'Signature Rituals',
+      description: 'The Memory Bridge Wall, the Bridge Toast, and keepsake reflections that make each gathering unforgettable.',
+      icon: Stars,
+    },
+    {
+      title: 'Annual Society Brunch',
+      description: 'An intimate, invite-only experience hosted each year in Abuja, honoring personal and collective passages.',
+      icon: Wine,
+    },
+    {
+      title: 'Mini Editions & Chapters',
+      description: 'Curated pop-ups and global touchpoints, beginning with Johannesburg in November 2025.',
+      icon: Globe2,
+    },
+    {
+      title: 'Knowledge & Media',
+      description: 'Newsletters, spotlights, and multimedia features sustaining learning and storytelling throughout the year.',
+      icon: Newspaper,
+    },
   ]
 
-  const testimonials = [
+  const extensionPlans = [
+    'Retreats & Immersions: Curated experiences of rest, reflection, and deep learning.',
+    'Scholarships & Grants: Supporting women and girls to access education and opportunities.',
+    'Archives & Publications: Capturing stories, speeches, and reflections for books, podcasts, and digital libraries.',
+    'Global Chapters: Extending the Bridge experience to international cities and diasporic communities.',
+    'Bridge Training Academy: Preparing next-generation Personal, Executive, and Hybrid Assistants with technical excellence and emotional intelligence.',
+  ]
+
+  const editions = [
     {
-      name: "Sarah Johnson",
-      role: "Community Leader",
-      location: "Abuja, Nigeria",
-      content: "The Bridge Initiative has transformed our community. We now have the skills and confidence to create lasting change."
+      year: '2024',
+      title: 'The Inaugural Conference',
+      description: 'A leadership gathering centered on practical knowledge-sharing, catalytic mentorship, and the first articulation of The Bridge ethos.',
     },
     {
-      name: "Michael Chen",
-      role: "Development Officer",
-      location: "Lagos, Nigeria",
-      content: "Working with The Bridge has been an incredible experience. Their approach to community development is truly innovative."
+      year: '2025',
+      title: 'The Society Brunch',
+      description: 'A luxury, invite-only brunch honoring personal, professional, and emotional passages in an atmosphere of elegance and intimacy.',
     },
-    {
-      name: "Aisha Mohammed",
-      role: "Youth Coordinator",
-      location: "Kano, Nigeria",
-      content: "The leadership training I received through The Bridge has empowered me to make a real difference in my community."
-    }
+  ]
+
+  const specialties = [
+    'Storytelling & Narrative Curation',
+    'Women’s Leadership Development',
+    'Mentorship & Sponsorship',
+    'Intergenerational Dialogue',
+    'Luxury Society Brunch Experiences',
+    'Alumni Network Building',
+    'Professional Training & Development',
+    'Executive Assistant Training',
+    'Personal Assistant Training',
+    'Hybrid Support Training',
+    'Community Building',
+    'Legacy Development',
+    'Retreats & Immersive Learning',
+    'Scholarships & Grants Access',
+    'Global Chapters & Diaspora Engagement',
+    'Event Curation & Program Design',
+    'Knowledge Sharing Platforms',
+    'Media & Publications',
+    'Impact Evaluation',
+    'Capacity Building for Women',
   ]
 
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative py-20 md:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-primary/5"></div>
-        
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-secondary/10 to-primary/10"></div>
+
         <div className="container-custom relative z-10">
-          <div
-            className="text-center mb-16"
-          >
+          <div className="text-center max-w-4xl mx-auto">
+            <p className="uppercase tracking-[0.4em] text-xs text-muted-foreground mb-6">
+              The Bridge by Aisha
+            </p>
             <h1 className="heading-primary mb-6">
-              The <span className="text-gradient">Bridge</span> Initiative
+              Luxury society brunch & legacy platform connecting emerging voices with seasoned leaders.
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Empowering communities through innovative leadership development and sustainable change initiatives. 
-              Building bridges to a brighter future for all.
+            <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+              Celebrating Our Passage on the Bridge, an intentional, intimate tradition grounded in elegance,
+              storytelling, mentorship, and intergenerational community.
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" asChild>
-              <Link href="/contact">
-                Get Involved
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-            <Button variant="outline" size="lg" asChild>
-              <Link href="/gallery">
-                View Our Work
-              </Link>
-            </Button>
-          </div>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
+          <Button size="lg" asChild>
+            <Link href="/contact">
+              Request an Invitation
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
+          <Button variant="outline" size="lg" asChild>
+            <Link href="/gallery">
+              Explore Highlights
+            </Link>
+          </Button>
+        </div>
         </div>
       </section>
 
-      {/* Mission Section */}
+      {/* About Section */}
       <section className="section-padding bg-muted/30">
         <div className="container-custom">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-[1.2fr_1fr] gap-16 items-start">
             <div>
-              <h2 className="heading-secondary mb-6">Our Mission</h2>
-              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                The Bridge Initiative is dedicated to creating sustainable positive change in communities across Nigeria 
-                and beyond. We believe that every community has the potential to thrive when given the right tools, 
-                knowledge, and support.
-              </p>
-              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                Through our comprehensive approach to community development, we bridge the gap between potential and 
-                achievement, empowering individuals and communities to create lasting impact.
-              </p>
-              <Button asChild size="lg">
-                <Link href="/contact">
-                  Learn More About Our Approach
-                </Link>
-              </Button>
+              <h2 className="heading-secondary mb-6">About The Bridge</h2>
+              <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+                <p>
+                  The Bridge by Aisha began as a leadership conference in 2024 and has since evolved into a luxury society
+                  brunch, an intentional, intimate tradition grounded in elegance, storytelling, and legacy. What started as a
+                  forum for practical knowledge-sharing now gathers women to honor their personal, professional, and emotional
+                  passages in a setting that is both refined and deeply human.
+                </p>
+                <p>
+                  Two editions have been held so far, the inaugural conference in 2024 and the society brunch in 2025, each
+                  reinforcing The Bridge as more than an event; it is a movement of connection, mentorship, and storytelling.
+                </p>
+                <p>
+                  At its core, The Bridge is an avenue for young women to connect with seasoned experts and leaders, a space
+                  that bridges curiosity and learning with wisdom and experience, catalyzing ideas, opportunities, and lasting
+                  relationships. Through curated conversations, intergenerational dialogue, and signature rituals, The Bridge
+                  advances mentorship, community, and sustainable impact that extend well beyond the brunch table.
+                </p>
+              </div>
             </div>
 
             <div className="relative">
-              <div className="relative w-80 h-80 mx-auto">
-                <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary/60 rounded-full blur-3xl opacity-20"></div>
-                <div className="relative w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full flex items-center justify-center">
-                  <Image
-                    src="/images/aisha-mission.png"
-                    alt="The Bridge Mission"
-                    width={300}
-                    height={300}
-                    className="w-3/4 h-3/4 object-cover rounded-full"
-                    priority
-                  />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-secondary/20 to-primary/30 blur-3xl opacity-30"></div>
+              <div className="relative rounded-3xl overflow-hidden border border-border shadow-xl">
+                <Image
+                  src="/images/aisha-mission.png"
+                  alt="The Bridge society brunch"
+                  width={480}
+                  height={560}
+                  className="w-full h-full object-cover"
+                  priority
+                />
+              </div>
+              <div className="mt-6 p-6 rounded-2xl bg-background/80 border border-border backdrop-blur">
+                <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-3">Editions</p>
+                <div className="space-y-4">
+                  {editions.map((edition) => (
+                    <div key={edition.year} className="border-l-2 border-primary/40 pl-4">
+                      <span className="text-xs font-semibold text-primary uppercase tracking-widest">
+                        {edition.year}
+                      </span>
+                      <h3 className="text-lg font-semibold">{edition.title}</h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{edition.description}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -133,148 +224,116 @@ export default function TheBridge() {
         </div>
       </section>
 
-      {/* Key Pillars Section */}
+      {/* Purpose Section */}
       <section className="section-padding">
         <div className="container-custom">
-          <div
-            className="text-center mb-16"
-          >
-            <h2 className="heading-secondary mb-4">Our Key Pillars</h2>
+          <div className="text-center mb-16">
+            <h2 className="heading-secondary mb-4">Our Purpose</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              The foundation of our approach to community development and sustainable change.
+              The Bridge is meticulously designed to create spaces where wisdom, curiosity, and legacy meet.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {pillars.map((pillar) => (
-              <div
-                key={pillar.title}
-              >
-                <Card className="card-hover h-full text-center">
-                  <CardHeader>
-                    <div className="text-4xl mb-4">{pillar.icon}</div>
-                    <CardTitle className="text-lg">{pillar.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription className="leading-relaxed">
-                      {pillar.description}
-                    </CardDescription>
-                  </CardContent>
-                </Card>
-              </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {purposePoints.map((item) => (
+              <Card key={item.title} className="card-hover h-full">
+                <CardHeader>
+                  <div className="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-4">
+                    <item.icon className="w-6 h-6" />
+                  </div>
+                  <CardTitle className="text-lg">{item.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-base leading-relaxed">{item.description}</CardDescription>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Impact Statistics */}
-      <section className="section-padding bg-primary text-primary-foreground">
-        <div className="container-custom">
-          <div
-            className="text-center mb-16"
-          >
-            <h2 className="heading-secondary mb-4">Our Impact</h2>
-            <p className="text-xl opacity-90 max-w-2xl mx-auto">
-              Measurable results that demonstrate our commitment to creating positive change in communities.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {impactStats.map((stat) => (
-              <div
-                key={stat.label}
-                className="text-center"
-              >
-                <div className="text-4xl md:text-5xl font-bold mb-2">{stat.number}</div>
-                <div className="text-lg opacity-90">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
+      {/* Highlights */}
       <section className="section-padding bg-muted/30">
         <div className="container-custom">
-          <div
-            className="text-center mb-16"
-          >
-            <h2 className="heading-secondary mb-4">What People Say</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Hear from community members and partners about the impact of The Bridge Initiative.
+          <div className="text-center mb-16">
+            <h2 className="heading-secondary mb-4">Highlights & Signature Touchpoints</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              A curated constellation of experiences, rituals, and programs that define The Bridge.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {testimonials.map((testimonial) => (
-              <div
-                key={testimonial.name}
-              >
-                <Card className="card-hover h-full">
-                  <CardContent className="pt-6">
-                    <div className="text-2xl mb-4">💬</div>
-                    <p className="text-muted-foreground mb-6 leading-relaxed">
-                      &quot;{testimonial.content}&quot;
-                    </p>
-                    <div>
-                      <div className="font-semibold">{testimonial.name}</div>
-                      <div className="text-sm text-muted-foreground">{testimonial.role}</div>
-                      <div className="text-sm text-muted-foreground">{testimonial.location}</div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
+            {highlights.map((highlight) => (
+              <Card key={highlight.title} className="card-hover h-full">
+                <CardHeader>
+                  <div className="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-4">
+                    <highlight.icon className="w-6 h-6" />
+                  </div>
+                  <CardTitle>{highlight.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-base leading-relaxed">
+                    {highlight.description}
+                  </CardDescription>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
       </section>
 
-      {/* How to Get Involved */}
+      {/* Extension Plans */}
       <section className="section-padding">
         <div className="container-custom">
-          <div
-            className="text-center mb-16"
-          >
-            <h2 className="heading-secondary mb-4">How to Get Involved</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              There are many ways to support and participate in The Bridge Initiative.
+          <div className="grid lg:grid-cols-[1.2fr_1fr] gap-16 items-start">
+            <div>
+              <h2 className="heading-secondary mb-6">Extension Plans</h2>
+              <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+                The Bridge is expanding into immersive experiences, knowledge platforms, and professional development
+                pathways that extend the brunch far beyond a single gathering.
+              </p>
+              <div className="space-y-4">
+                {extensionPlans.map((plan) => (
+                  <div key={plan} className="flex items-start gap-4">
+                    <CheckCircle2 className="w-5 h-5 text-primary mt-1" />
+                    <p className="text-base text-muted-foreground leading-relaxed">{plan}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <Card className="card-hover">
+              <CardHeader>
+                <CardTitle>Mission</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-lg leading-relaxed text-muted-foreground">
+                  To create an intentional, elegant space where women pause, connect, and celebrate the bridges they have
+                  crossed while cultivating the wisdom, courage, and community required to cross those ahead.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* LinkedIn Specialties */}
+      <section className="section-padding bg-muted/30">
+        <div className="container-custom">
+          <div className="text-center mb-16">
+            <h2 className="heading-secondary mb-4">LinkedIn Specialties</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              A blueprint of capabilities stewarded through The Bridge, shaping leadership, community, and legacy.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Community Participation",
-                description: "Join our community development programs and leadership training sessions.",
-                action: "Register Now"
-              },
-              {
-                title: "Partnership",
-                description: "Partner with us to expand the reach and impact of The Bridge Initiative.",
-                action: "Contact Us"
-              },
-              {
-                title: "Support",
-                description: "Support our initiatives through donations, resources, or expertise.",
-                action: "Donate"
-              }
-            ].map((item) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {specialties.map((specialty) => (
               <div
-                key={item.title}
+                key={specialty}
+                className="rounded-full border border-border bg-background px-6 py-3 text-sm font-medium text-muted-foreground hover:border-primary transition-colors"
               >
-                <Card className="card-hover h-full">
-                  <CardHeader>
-                    <CardTitle>{item.title}</CardTitle>
-                    <CardDescription className="text-base">
-                      {item.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <Button variant="outline" className="w-full">
-                      {item.action}
-                    </Button>
-                  </CardContent>
-                </Card>
+                {specialty}
               </div>
             ))}
           </div>
@@ -284,22 +343,22 @@ export default function TheBridge() {
       {/* CTA Section */}
       <section className="section-padding bg-primary text-primary-foreground">
         <div className="container-custom text-center">
-          <div>
-            <h2 className="heading-secondary mb-6">Ready to Build Bridges?</h2>
-            <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
-              Join us in creating lasting positive change in communities across Nigeria and beyond. 
-              Together, we can build bridges to a brighter future.
+          <div className="max-w-3xl mx-auto">
+            <h2 className="heading-secondary mb-6">Join Us On The Bridge</h2>
+            <p className="text-xl mb-8 opacity-90">
+              Be part of a legacy platform where stories are honored, wisdom is shared, and future passages are imagined
+              together.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="secondary" size="lg" asChild>
                 <Link href="/contact">
-                  Get in Touch
+                  Request an Invitation
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
               <Button variant="outline" size="lg" asChild className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
-                <Link href="/gallery">
-                  View Our Projects
+                <Link href="/blog">
+                  Discover Stories
                 </Link>
               </Button>
             </div>

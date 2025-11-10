@@ -1,15 +1,32 @@
+"use client"
+
+import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 // import { motion } from 'framer-motion'
-import { ArrowRight, Download, Award } from 'lucide-react'
+import { ArrowRight, Award, Calendar, User } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { profile } from '@/data/profile'
 import { projects } from '@/data/projects'
+import { blogPosts } from '@/data/blog'
 import ImageSlider from '@/components/ImageSlider'
+import { InviteAishaDialog } from '@/components/InviteAishaDialog'
+import { ConsultingStrategyDialog } from '@/components/ConsultingStrategyDialog'
 
 export default function Home() {
+  const [inviteDialogOpen, setInviteDialogOpen] = useState(false)
+  const [consultingDialogOpen, setConsultingDialogOpen] = useState(false)
   const featuredProjects = projects.filter(project => project.featured).slice(0, 3)
+  const featuredPosts = blogPosts.filter(post => post.featured).slice(0, 3)
+
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    })
+  }
 
   return (
     <div className="min-h-screen">
@@ -38,17 +55,9 @@ export default function Home() {
               <div
                 className="flex flex-col sm:flex-row gap-4"
               >
-                <Button asChild size="lg" className="group">
-                  <Link href="/about">
-                    Learn More About Me
-                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </Button>
-                <Button variant="outline" size="lg" asChild>
-                  <Link href="/the-bridge">
-                    The Bridge
-                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </Link>
+                <Button variant="outline" size="lg" className="group" onClick={() => setConsultingDialogOpen(true)}>
+                  Consulting &amp; Strategy
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </div>
             </div>
@@ -66,6 +75,32 @@ export default function Home() {
                   priority
                 />
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Invite Aisha Section */}
+      <section className="section-padding bg-muted/30">
+        <div className="container-custom">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="heading-secondary mb-4">Invite Aisha to Lead the Room</h2>
+              <p className="text-xl text-muted-foreground leading-relaxed">
+                From summits and state convenings to private briefings, Aisha brings strategy, storytelling, and sisterhood
+                to move rooms, delivering measurable results.
+              </p>
+            </div>
+            <div className="flex flex-col gap-4">
+              <Button size="lg" onClick={() => setInviteDialogOpen(true)}>
+                Book Aisha to Speak
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+              <ul className="space-y-3 text-sm text-muted-foreground">
+                <li>• Multi-step intake form capturing event type, audience, goals, and budget.</li>
+                <li>• Media kit auto-delivered immediately after submission.</li>
+                <li>• Topic cards featuring The Bridge, Women in Policy, Leadership Branding, and Legacy Strategy.</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -114,6 +149,88 @@ export default function Home() {
 
       {/* Image Slider */}
       <ImageSlider />
+
+      {/* Featured Posts */}
+      <section className="section-padding bg-muted/30">
+        <div className="container-custom">
+          <div className="text-center mb-16">
+            <h2 className="heading-secondary mb-4">Featured Posts</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Highlights from the latest articles sharing leadership insights, community impact stories, and humanitarian initiatives.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {featuredPosts.map((post) => (
+              <div key={post.id} className="group">
+                <Card className="card-hover h-full overflow-hidden">
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
+                  </div>
+
+                    <CardHeader>
+                      <div className="flex items-center space-x-4 text-sm text-muted-foreground mb-2">
+                        <div className="flex items-center space-x-1">
+                          <Calendar className="w-4 h-4" />
+                          <span>{formatDate(post.date)}</span>
+                        </div>
+                        <div className="flex items-center space-x-1">
+                          <User className="w-4 h-4" />
+                          <span>{post.author}</span>
+                        </div>
+                      </div>
+                      <CardTitle className="text-2xl">{post.title}</CardTitle>
+                      <CardDescription className="leading-relaxed">
+                        {post.excerpt}
+                      </CardDescription>
+                    </CardHeader>
+
+                  <CardContent>
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {post.tags.slice(0, 2).map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm text-muted-foreground bg-muted px-3 py-1 rounded-full">
+                        {post.category}
+                      </span>
+
+                      <Button variant="outline" size="sm" asChild>
+                        <Link href={`/blog/${post.id}`}>
+                          Read More
+                          <ArrowRight className="ml-2 h-3 w-3" />
+                        </Link>
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Button asChild size="lg">
+              <Link href="/blog">
+                View All Posts
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
 
       {/* Featured Projects */}
       <section className="section-padding">
@@ -181,37 +298,80 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Achievements Section */}
+      {/* Authority & Impact Grid */}
       <section className="section-padding bg-muted/30">
         <div className="container-custom">
-          <div
-            className="text-center mb-16"
-          >
-            <h2 className="heading-secondary mb-4">Achievements & Recognition</h2>
+          <div className="text-center mb-16">
+            <h2 className="heading-secondary mb-4">Results, Not Noise</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Milestones and recognition for contributions to business leadership and humanitarian work.
+              Measured impact across rooms, regions, and real lives.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {profile.achievements.map((achievement) => (
-              <div
-                key={achievement.title}
-              >
-                <Card className="card-hover text-center h-full">
-                  <CardHeader>
-                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Award className="w-8 h-8 text-primary" />
-                    </div>
-                    <CardTitle className="text-lg">{achievement.title}</CardTitle>
-                    <CardDescription>{achievement.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-sm text-muted-foreground">{achievement.year}</div>
-                  </CardContent>
-                </Card>
-              </div>
-            ))}
+          <div className="grid gap-8 md:grid-cols-2">
+            <Card className="card-hover h-full">
+              <CardHeader>
+                <CardTitle>Awards &amp; Recognitions</CardTitle>
+              </CardHeader>
+              <CardContent className="flex flex-col gap-4">
+                <div className="text-4xl font-semibold text-primary">10+</div>
+                <CardDescription className="leading-relaxed">
+                  Honours from governments, global enterprise networks, and women-in-leadership institutions.
+                </CardDescription>
+                <Button variant="outline" size="sm" className="w-fit px-6">
+                  View Highlight Reel
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="card-hover h-full">
+              <CardHeader>
+                <CardTitle>Certifications</CardTitle>
+              </CardHeader>
+              <CardContent className="flex flex-col gap-4">
+                <div className="text-4xl font-semibold text-primary">15+</div>
+                <CardDescription className="leading-relaxed">
+                  Accredited trainings in leadership, policy design, humanitarian response, and strategic communication.
+                </CardDescription>
+                <Button variant="outline" size="sm" className="w-fit px-6">
+                  Browse Credentials
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="card-hover h-full">
+              <CardHeader>
+                <CardTitle>Speaking Engagements</CardTitle>
+              </CardHeader>
+              <CardContent className="flex flex-col gap-4">
+                <div className="text-4xl font-semibold text-primary">70+</div>
+                  <CardDescription className="leading-relaxed">
+                    Stages from state house briefings to global summits, each one moved to action.
+                </CardDescription>
+                <Button variant="outline" size="sm" className="w-fit px-6">
+                  Explore Clips &amp; Logos
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="card-hover h-full">
+              <CardHeader>
+                <CardTitle>Communities Served</CardTitle>
+              </CardHeader>
+              <CardContent className="flex flex-col gap-4">
+                <div className="text-4xl font-semibold text-primary">30+</div>
+                <CardDescription className="leading-relaxed">
+                  Grassroots communities, policy circles, and networks uplifted through programs and partnerships.
+                </CardDescription>
+                <Button variant="outline" size="sm" className="w-fit px-6">
+                  View Map &amp; Timeline
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -240,6 +400,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <InviteAishaDialog open={inviteDialogOpen} onOpenChange={setInviteDialogOpen} />
+      <ConsultingStrategyDialog open={consultingDialogOpen} onOpenChange={setConsultingDialogOpen} />
     </div>
   )
 }

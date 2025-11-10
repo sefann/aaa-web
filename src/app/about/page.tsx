@@ -132,7 +132,7 @@ From foundation to chandelier, searchees globally for the world's most renowned 
                 
                 <h3 className="text-xl font-semibold text-primary mb-4">Executive Director, New Age Group</h3>
                 <p className="text-muted-foreground leading-relaxed mb-4">
-                  Honored to serve as the Executive Director of New Age Group—a distinguished conglomerate with significant interests in Agriculture, Trading, and Oil and Gas sectors.
+                  Honored to serve as the Executive Director of New Age Group, a distinguished conglomerate with significant interests in Agriculture, Trading, and Oil and Gas sectors.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
                   My professional journey is a tapestry woven with threads of commitment to excellence and a relentless pursuit of innovation. It speaks volumes about my expertise in business management and strategic leadership. Join me on this transformative journey as we continue to chart new territories and redefine industry standards.
