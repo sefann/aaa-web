@@ -59,6 +59,8 @@ const config: Config = {
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
         poppins: ["Poppins", "system-ui", "sans-serif"],
+        heading: ["Playfair Display", "Canela", "Georgia", "serif"],
+        body: ["Helvetica Neue", "Helvetica", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Arial", "sans-serif"],
       },
       keyframes: {
         "accordion-down": {

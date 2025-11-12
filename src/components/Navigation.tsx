@@ -28,8 +28,8 @@ export default function Navigation() {
     { href: '/blog', label: 'Blog' },
     { href: '/the-bridge', label: 'The Bridge' },
     { href: '/university-tour', label: 'University Tour' },
-    { href: '/shop', label: 'Shop' },
-    { href: '/contact', label: 'Contact' }
+    { href: '/contact', label: 'Contact' },
+    { href: '/shop', label: 'Shop' }
   ]
 
   return (
@@ -80,17 +80,21 @@ export default function Navigation() {
                 </Link>
               </div>
             ))}
-            {/* Contact Button */}
+            {/* Shop Button */}
             <div>
               <Link
-                href="/contact"
+                href="/shop"
                 className={`relative px-4 py-2 text-sm rounded-lg transition-all duration-300 ${
-                  pathname === '/contact'
-                    ? 'bg-blue-600 text-white font-semibold'
-                    : 'bg-blue-500 text-white hover:bg-blue-600'
+                  pathname === '/shop'
+                    ? 'font-semibold'
+                    : ''
                 }`}
+                style={{
+                  backgroundColor: pathname === '/shop' ? '#F8F6F3' : '#F8F6F3',
+                  color: '#000000'
+                }}
               >
-                Contact
+                Shop
               </Link>
             </div>
             
@@ -149,18 +153,22 @@ export default function Navigation() {
                   </Link>
                 </div>
               ))}
-              {/* Mobile Contact Button */}
+              {/* Mobile Shop Button */}
               <div>
                 <Link
-                  href="/contact"
+                  href="/shop"
                   className={`block px-6 py-3 rounded-xl transition-all duration-300 ${
-                    pathname === '/contact'
-                      ? 'bg-blue-600 text-white font-semibold'
-                      : 'bg-blue-500 text-white hover:bg-blue-600'
+                    pathname === '/shop'
+                      ? 'font-semibold'
+                      : ''
                   }`}
+                  style={{
+                    backgroundColor: '#F8F6F3',
+                    color: '#000000'
+                  }}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Contact
+                  Shop
                 </Link>
               </div>
               
