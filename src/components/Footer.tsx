@@ -43,10 +43,12 @@ export default function Footer() {
             <h4 className="text-xl font-semibold mb-4 text-white">Quick Links</h4>
             <div className="space-y-2">
               {[
-                { href: '/about', label: 'About Me' },
+                { href: '/about', label: 'About' },
                 { href: '/gallery', label: 'Gallery' },
                 { href: '/blog', label: 'Blog' },
                 { href: '/the-bridge', label: 'The Bridge' },
+                { href: '/university-tour', label: 'University Tour' },
+                { href: '/shop', label: 'Shop' },
                 { href: '/contact', label: 'Contact' }
               ].map((link) => (
                 <div

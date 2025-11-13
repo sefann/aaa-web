@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 // import { motion } from 'framer-motion'
-import { ArrowRight, Award, Calendar, User } from 'lucide-react'
+import { ArrowRight, Award, Calendar, User, Linkedin } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { profile } from '@/data/profile'
@@ -26,26 +26,28 @@ const typewriterTexts = [
 
 function CountUp({ end, duration = 2000 }: { end: number; duration?: number }) {
   const [count, setCount] = useState(0)
-  const [hasAnimated, setHasAnimated] = useState(false)
 
   useEffect(() => {
+    let animationFrameId: number | null = null
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && !hasAnimated) {
-            setHasAnimated(true)
+          if (entry.isIntersecting) {
+            // Reset count and start animation
+            setCount(0)
             let startTime: number | null = null
             const animate = (currentTime: number) => {
               if (startTime === null) startTime = currentTime
               const progress = Math.min((currentTime - startTime) / duration, 1)
               setCount(Math.floor(progress * end))
               if (progress < 1) {
-                requestAnimationFrame(animate)
+                animationFrameId = requestAnimationFrame(animate)
               } else {
                 setCount(end)
               }
             }
-            requestAnimationFrame(animate)
+            animationFrameId = requestAnimationFrame(animate)
           }
         })
       },
@@ -58,11 +60,14 @@ function CountUp({ end, duration = 2000 }: { end: number; duration?: number }) {
     }
 
     return () => {
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId)
+      }
       if (section) {
         observer.unobserve(section)
       }
     }
-  }, [end, duration, hasAnimated])
+  }, [end, duration])
 
   return <>{count}+</>
 }
@@ -156,7 +161,6 @@ export default function Home() {
             }}
             priority
           />
-          <div className="absolute inset-0 bg-black/50 pointer-events-none"></div>
         </div>
         
         <div className="container-custom relative z-10 py-16 md:py-20 lg:py-24">
@@ -175,6 +179,20 @@ export default function Home() {
                 <p className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold leading-tight">
                   <TypewriterText />
                 </p>
+              </div>
+              {/* LinkedIn Button */}
+              <div className="mt-6">
+                <Button
+                  asChild
+                  size="lg"
+                  className="px-6 py-3 font-semibold transition-all duration-300 hover:scale-105"
+                  style={{ backgroundColor: '#F8F6F3', color: '#2563eb' }}
+                >
+                  <Link href={profile.social.linkedin} target="_blank" rel="noopener noreferrer">
+                    <Linkedin className="mr-2 h-5 w-5" />
+                    Connect on LinkedIn
+                  </Link>
+                </Button>
               </div>
             </div>
 
@@ -359,7 +377,7 @@ export default function Home() {
           <div className="text-center mb-8">
             <h2 className="heading-secondary mb-4 text-white">AAA Consulting & Strategy</h2>
             <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-              Through Pathmark Advisory and AAA Consulting, Aisha provides high-level business and policy strategy at the intersection of governance, industry, and social impact.
+              Through <Link href="https://pathmarkadvisory.com/" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors underline">Pathmark Advisory</Link>, Aisha provides high-level business and policy strategy at the intersection of governance, industry, and social impact.
             </p>
           </div>
 
@@ -414,7 +432,8 @@ export default function Home() {
             <Button 
               size="lg" 
               onClick={() => setConsultingDialogOpen(true)}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+              className="px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+              style={{ backgroundColor: '#F8F6F3', color: '#1a1a1a' }}
             >
               Request a Strategy Consultation
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -424,8 +443,24 @@ export default function Home() {
       </section>
 
       {/* Count Section */}
-      <section id="count-section" className="py-8 md:py-12 text-primary-foreground" style={{ backgroundColor: '#171f6d' }}>
-        <div className="container-custom">
+      <section id="count-section" className="relative py-8 md:py-12 text-primary-foreground overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 w-full h-full">
+          <Image
+            src="/images/count.png"
+            alt="Count Section Background"
+            fill
+            className="object-cover w-full h-full"
+            style={{ 
+              objectFit: 'cover', 
+              objectPosition: 'center',
+              width: '100%',
+              height: '100%'
+            }}
+          />
+          <div className="absolute inset-0 pointer-events-none" style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)' }}></div>
+        </div>
+        <div className="container-custom relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold text-white mb-1">
