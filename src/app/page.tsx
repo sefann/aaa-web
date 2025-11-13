@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 // import { motion } from 'framer-motion'
@@ -70,6 +70,161 @@ function CountUp({ end, duration = 2000 }: { end: number; duration?: number }) {
   }, [end, duration])
 
   return <>{count}+</>
+}
+
+function TestimonialsCarousel() {
+  const testimonials = [
+    {
+      image: '/images/aaaimage.jpg',
+      quote: 'Aisha is an exceptional leader who brings strategic thinking and authentic storytelling to every engagement.',
+      name: 'TESTIMONIAL AUTHOR 1',
+      title: 'Title and Organization'
+    },
+    {
+      image: '/images/aaaimage.jpg',
+      quote: 'Aisha\'s ability to connect with diverse audiences through powerful messages and actionable insights is remarkable.',
+      name: 'TESTIMONIAL AUTHOR 2',
+      title: 'Title and Organization'
+    },
+    {
+      image: '/images/aaaimage.jpg',
+      quote: 'Working with Aisha has been transformative. Her strategic depth and emotional resonance move rooms to action.',
+      name: 'TESTIMONIAL AUTHOR 3',
+      title: 'Title and Organization'
+    },
+    {
+      image: '/images/aaaimage.jpg',
+      quote: 'Aisha represents the epitome of leadership, combining business excellence with genuine humanitarian impact.',
+      name: 'TESTIMONIAL AUTHOR 4',
+      title: 'Title and Organization'
+    },
+    {
+      image: '/images/aaaimage.jpg',
+      quote: 'Aisha\'s vision and dedication to creating positive change in communities is truly inspiring and impactful.',
+      name: 'TESTIMONIAL AUTHOR 5',
+      title: 'Title and Organization'
+    },
+    {
+      image: '/images/aaaimage.jpg',
+      quote: 'Through her work, Aisha demonstrates what it means to lead with both strategic acumen and heartfelt compassion.',
+      name: 'TESTIMONIAL AUTHOR 6',
+      title: 'Title and Organization'
+    },
+    {
+      image: '/images/aaaimage.jpg',
+      quote: 'Aisha\'s expertise in policy, strategy, and social impact makes her an invaluable voice in today\'s leadership landscape.',
+      name: 'TESTIMONIAL AUTHOR 7',
+      title: 'Title and Organization'
+    }
+  ]
+
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isSwiping, setIsSwiping] = useState(false)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsSwiping(true)
+      setTimeout(() => {
+        setCurrentIndex((prev) => (prev + 1) % testimonials.length)
+        setIsSwiping(false)
+      }, 600) // Wait for swipe animation
+    }, 5000) // Change every 5 seconds (4.4s display + 0.6s transition)
+    
+    return () => clearInterval(interval)
+  }, [testimonials.length])
+
+  // Get 4 testimonials to display + 1 extra for swipe-in
+  const getVisibleTestimonials = () => {
+    const visible = []
+    for (let i = 0; i < 5; i++) {
+      visible.push(testimonials[(currentIndex + i) % testimonials.length])
+    }
+    return visible
+  }
+
+  const visibleTestimonials = getVisibleTestimonials()
+  const cardWidth = 288 // w-72
+  const gap = 24 // gap-6
+  const translateX = isSwiping ? -(cardWidth + gap) : 0
+
+  return (
+    <section className="section-padding bg-white">
+      <div className="container-custom">
+        <h2 className="heading-secondary mb-12 text-center text-black">WHAT PEOPLE SAY ABOUT AISHA</h2>
+        
+        <div className="flex justify-center">
+          {/* Mobile: Show all testimonials stacked vertically */}
+          <div className="md:hidden w-full space-y-6">
+            {testimonials.map((testimonial, index) => (
+              <div
+                key={`${testimonial.name}-mobile-${index}`}
+                className="w-full flex flex-col group cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+              >
+                {/* Portrait Image */}
+                <div className="relative w-full h-56 mb-0 overflow-hidden">
+                  <Image
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    fill
+                    className="object-cover grayscale"
+                  />
+                </div>
+                
+                {/* Quote Section - Dark Background */}
+                <div className="bg-gray-900 p-6 flex-1">
+                  <p className="text-white text-sm leading-relaxed">&quot;{testimonial.quote}&quot;</p>
+                </div>
+                
+                {/* Name Section - Light Beige Background */}
+                <div className="bg-[#f8f6f3] p-4">
+                  <h3 className="text-black font-bold text-xs uppercase mb-2">{testimonial.name}</h3>
+                  <p className="text-black text-xs">{testimonial.title}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          {/* Desktop: Show carousel with swipe effect */}
+          <div className="hidden md:flex justify-center">
+            <div className="relative overflow-hidden" style={{ width: 'calc(288px * 4 + 24px * 3)' }}>
+              <div 
+                className="flex gap-6 transition-transform ease-in-out"
+                style={{ transform: `translateX(${translateX}px)`, transitionDuration: '600ms' }}
+              >
+                {visibleTestimonials.map((testimonial, index) => (
+                  <div
+                    key={`${testimonial.name}-${currentIndex}-${index}`}
+                    className="flex-shrink-0 w-72 flex flex-col group cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+                  >
+                    {/* Portrait Image */}
+                    <div className="relative w-full h-56 mb-0 overflow-hidden">
+                      <Image
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        fill
+                        className="object-cover grayscale"
+                      />
+                    </div>
+                    
+                    {/* Quote Section - Dark Background */}
+                    <div className="bg-gray-900 p-6 flex-1">
+                      <p className="text-white text-sm leading-relaxed">&quot;{testimonial.quote}&quot;</p>
+                    </div>
+                    
+                    {/* Name Section - Light Beige Background */}
+                    <div className="bg-[#f8f6f3] p-4">
+                      <h3 className="text-black font-bold text-sm uppercase mb-1">{testimonial.name}</h3>
+                      <p className="text-black text-xs">{testimonial.title}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
 }
 
 function TypewriterText() {
@@ -381,7 +536,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-4 gap-4 mb-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8 max-w-5xl mx-auto">
             {[
               {
                 title: 'Business Strategy & Growth Advisory',
@@ -491,152 +646,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <h2 className="heading-secondary mb-12 text-center text-black">WHAT PEOPLE SAY ABOUT AISHA</h2>
-          
-          <div className="overflow-hidden">
-            <div className="flex animate-scroll">
-              {/* Duplicate testimonials for seamless loop */}
-              {[
-                {
-                  image: '/images/aaaimage.jpg',
-                  quote: 'Aisha is an exceptional leader who brings strategic thinking and authentic storytelling to every engagement.',
-                  name: 'TESTIMONIAL AUTHOR 1',
-                  title: 'Title and Organization'
-                },
-                {
-                  image: '/images/aaaimage.jpg',
-                  quote: 'Aisha\'s ability to connect with diverse audiences through powerful messages and actionable insights is remarkable.',
-                  name: 'TESTIMONIAL AUTHOR 2',
-                  title: 'Title and Organization'
-                },
-                {
-                  image: '/images/aaaimage.jpg',
-                  quote: 'Working with Aisha has been transformative. Her strategic depth and emotional resonance move rooms to action.',
-                  name: 'TESTIMONIAL AUTHOR 3',
-                  title: 'Title and Organization'
-                },
-                {
-                  image: '/images/aaaimage.jpg',
-                  quote: 'Aisha represents the epitome of leadership, combining business excellence with genuine humanitarian impact.',
-                  name: 'TESTIMONIAL AUTHOR 4',
-                  title: 'Title and Organization'
-                },
-                {
-                  image: '/images/aaaimage.jpg',
-                  quote: 'Aisha\'s vision and dedication to creating positive change in communities is truly inspiring and impactful.',
-                  name: 'TESTIMONIAL AUTHOR 5',
-                  title: 'Title and Organization'
-                },
-                {
-                  image: '/images/aaaimage.jpg',
-                  quote: 'Through her work, Aisha demonstrates what it means to lead with both strategic acumen and heartfelt compassion.',
-                  name: 'TESTIMONIAL AUTHOR 6',
-                  title: 'Title and Organization'
-                },
-                {
-                  image: '/images/aaaimage.jpg',
-                  quote: 'Aisha\'s expertise in policy, strategy, and social impact makes her an invaluable voice in today\'s leadership landscape.',
-                  name: 'TESTIMONIAL AUTHOR 7',
-                  title: 'Title and Organization'
-                }
-              ].map((testimonial, index) => (
-                <div key={`testimonial-${index}`} className="flex-shrink-0 w-72 flex flex-col group cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
-                  {/* Portrait Image */}
-                  <div className="relative w-full h-56 mb-0 overflow-hidden">
-                    <Image
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      fill
-                      className="object-cover grayscale"
-                    />
-                  </div>
-                  
-                  {/* Quote Section - Dark Background */}
-                  <div className="bg-gray-900 p-6 flex-1">
-                    <p className="text-white text-sm leading-relaxed">&quot;{testimonial.quote}&quot;</p>
-                  </div>
-                  
-                  {/* Name Section - Light Beige Background */}
-                  <div className="bg-[#f8f6f3] p-4">
-                    <h3 className="text-black font-bold text-sm uppercase mb-1">{testimonial.name}</h3>
-                    <p className="text-black text-xs">{testimonial.title}</p>
-                  </div>
-                </div>
-              ))}
-              {/* Duplicate for seamless loop */}
-              {[
-                {
-                  image: '/images/aaaimage.jpg',
-                  quote: 'Aisha is an exceptional leader who brings strategic thinking and authentic storytelling to every engagement.',
-                  name: 'TESTIMONIAL AUTHOR 1',
-                  title: 'Title and Organization'
-                },
-                {
-                  image: '/images/aaaimage.jpg',
-                  quote: 'Aisha\'s ability to connect with diverse audiences through powerful messages and actionable insights is remarkable.',
-                  name: 'TESTIMONIAL AUTHOR 2',
-                  title: 'Title and Organization'
-                },
-                {
-                  image: '/images/aaaimage.jpg',
-                  quote: 'Working with Aisha has been transformative. Her strategic depth and emotional resonance move rooms to action.',
-                  name: 'TESTIMONIAL AUTHOR 3',
-                  title: 'Title and Organization'
-                },
-                {
-                  image: '/images/aaaimage.jpg',
-                  quote: 'Aisha represents the epitome of leadership, combining business excellence with genuine humanitarian impact.',
-                  name: 'TESTIMONIAL AUTHOR 4',
-                  title: 'Title and Organization'
-                },
-                {
-                  image: '/images/aaaimage.jpg',
-                  quote: 'Aisha\'s vision and dedication to creating positive change in communities is truly inspiring and impactful.',
-                  name: 'TESTIMONIAL AUTHOR 5',
-                  title: 'Title and Organization'
-                },
-                {
-                  image: '/images/aaaimage.jpg',
-                  quote: 'Through her work, Aisha demonstrates what it means to lead with both strategic acumen and heartfelt compassion.',
-                  name: 'TESTIMONIAL AUTHOR 6',
-                  title: 'Title and Organization'
-                },
-                {
-                  image: '/images/aaaimage.jpg',
-                  quote: 'Aisha\'s expertise in policy, strategy, and social impact makes her an invaluable voice in today\'s leadership landscape.',
-                  name: 'TESTIMONIAL AUTHOR 7',
-                  title: 'Title and Organization'
-                }
-              ].map((testimonial, index) => (
-                <div key={`testimonial-duplicate-${index}`} className="flex-shrink-0 w-72 flex flex-col group cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
-                  {/* Portrait Image */}
-                  <div className="relative w-full h-56 mb-0 overflow-hidden">
-                    <Image
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      fill
-                      className="object-cover grayscale"
-                    />
-                  </div>
-                  
-                  {/* Quote Section - Dark Background */}
-                  <div className="bg-gray-900 p-6 flex-1">
-                    <p className="text-white text-sm leading-relaxed">&quot;{testimonial.quote}&quot;</p>
-                  </div>
-                  
-                  {/* Name Section - Light Beige Background */}
-                  <div className="bg-[#f8f6f3] p-4">
-                    <h3 className="text-black font-bold text-sm uppercase mb-1">{testimonial.name}</h3>
-                    <p className="text-black text-xs">{testimonial.title}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <TestimonialsCarousel />
 
       <InviteAishaDialog open={inviteDialogOpen} onOpenChange={setInviteDialogOpen} />
       <ConsultingStrategyDialog open={consultingDialogOpen} onOpenChange={setConsultingDialogOpen} />

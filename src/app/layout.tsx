@@ -4,6 +4,7 @@ import './globals.css'
 
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import LogosSection from '@/components/LogosSection'
 import CookieConsent from '@/components/CookieConsent'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -49,6 +50,8 @@ export default function RootLayout({
           <main className="pt-16">
             {children}
           </main>
+          <LogosSection />
+          <div className="w-full h-3 bg-white"></div>
           <Footer />
           <CookieConsent />
         </div>

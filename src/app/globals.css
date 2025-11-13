@@ -153,7 +153,44 @@
     }
   }
 
+  @keyframes tectonic-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
   .animate-scroll {
     animation: scroll 30s linear infinite;
+  }
+
+  .animate-tectonic {
+    animation: tectonic-scroll 40s linear infinite;
+    will-change: transform;
+  }
+
+  @keyframes pan {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-pan {
+    animation: pan 50s linear infinite;
+    will-change: transform;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
 }

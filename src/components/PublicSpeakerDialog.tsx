@@ -33,14 +33,14 @@ export function PublicSpeakerDialog({ open, onOpenChange }: PublicSpeakerDialogP
       <div className="absolute inset-0 bg-black/65 backdrop-blur-sm" onClick={closeDialog} />
 
       <Card
-        className="relative z-10 w-full max-w-4xl shadow-2xl flex flex-col max-h-[90vh] bg-black border-gray-700"
+        className="relative z-10 w-full max-w-4xl shadow-2xl flex flex-col max-h-[90vh] bg-white border-gray-200"
         onClick={(event) => event.stopPropagation()}
       >
-        <CardHeader className="relative bg-black px-8 pt-8 pb-6">
+        <CardHeader className="relative px-8 pt-8 pb-6" style={{ backgroundColor: '#4B3A34', color: 'white' }}>
           <div className="flex flex-row items-start justify-between gap-6">
             <div className="flex-1">
               <CardTitle className="text-3xl mb-3 text-white">Aisha as a Public Speaker</CardTitle>
-              <CardDescription className="text-base text-gray-300">
+              <CardDescription className="text-base text-white/90">
                 A recognized voice shaping public discourse and policy through powerful storytelling and strategic insights.
               </CardDescription>
             </div>
@@ -55,18 +55,18 @@ export function PublicSpeakerDialog({ open, onOpenChange }: PublicSpeakerDialogP
           </div>
         </CardHeader>
 
-        <CardContent className="flex-1 overflow-y-auto bg-black px-8 py-6">
+        <CardContent className="flex-1 overflow-y-auto bg-white px-8 py-6">
           <div className="space-y-6">
             <div>
-              <h3 className="text-xl font-semibold mb-3 text-white">Speaking Expertise</h3>
-              <p className="text-gray-300 leading-relaxed mb-4">
+              <h3 className="text-xl font-semibold mb-3 text-gray-900">Speaking Expertise</h3>
+              <p className="text-gray-700 leading-relaxed mb-4">
                 Aisha Abdullahi Adamu brings a unique blend of strategic thinking, authentic storytelling, and actionable insights to every speaking engagement. With over 70+ speaking engagements across state house briefings, global summits, and corporate convenings, she has a proven track record of moving rooms to action.
               </p>
             </div>
 
             <div>
-              <h3 className="text-xl font-semibold mb-3 text-white">Key Topics</h3>
-              <ul className="space-y-2 text-gray-300">
+              <h3 className="text-xl font-semibold mb-3 text-gray-900">Key Topics</h3>
+              <ul className="space-y-2 text-gray-700">
                 <li className="flex items-start">
                   <span className="mr-2">•</span>
                   <span><strong>The Bridge:</strong> Storytelling, mentorship, and legacy from Aisha's signature society platform.</span>
@@ -87,48 +87,48 @@ export function PublicSpeakerDialog({ open, onOpenChange }: PublicSpeakerDialogP
             </div>
 
             <div>
-              <h3 className="text-xl font-semibold mb-3 text-white">Speaking Style</h3>
-              <p className="text-gray-300 leading-relaxed">
+              <h3 className="text-xl font-semibold mb-3 text-gray-900">Speaking Style</h3>
+              <p className="text-gray-700 leading-relaxed">
                 Aisha's speaking style combines strategic depth with emotional resonance. She delivers content that is both intellectually rigorous and deeply human, connecting with diverse audiences through authentic stories and practical frameworks. Her presentations are known for inspiring action and driving measurable outcomes.
               </p>
             </div>
 
             <div>
-              <h3 className="text-xl font-semibold mb-3 text-white">Engagement Types</h3>
+              <h3 className="text-xl font-semibold mb-3 text-gray-900">Engagement Types</h3>
               <div className="grid md:grid-cols-2 gap-4">
-                <div className="p-4 bg-gray-800 rounded-lg border border-gray-700">
+                <div className="p-4 rounded-lg border" style={{ backgroundColor: '#4B3A34', borderColor: '#4B3A34' }}>
                   <h4 className="font-semibold mb-2 text-white">Summits & Conferences</h4>
-                  <p className="text-sm text-gray-300">Keynote addresses and panel discussions at major industry and policy events.</p>
+                  <p className="text-sm text-white/90">Keynote addresses and panel discussions at major industry and policy events.</p>
                 </div>
-                <div className="p-4 bg-gray-800 rounded-lg border border-gray-700">
+                <div className="p-4 rounded-lg border" style={{ backgroundColor: '#4B3A34', borderColor: '#4B3A34' }}>
                   <h4 className="font-semibold mb-2 text-white">State Convenings</h4>
-                  <p className="text-sm text-gray-300">Strategic briefings and policy discussions with government stakeholders.</p>
+                  <p className="text-sm text-white/90">Strategic briefings and policy discussions with government stakeholders.</p>
                 </div>
-                <div className="p-4 bg-gray-800 rounded-lg border border-gray-700">
+                <div className="p-4 rounded-lg border" style={{ backgroundColor: '#4B3A34', borderColor: '#4B3A34' }}>
                   <h4 className="font-semibold mb-2 text-white">Corporate Events</h4>
-                  <p className="text-sm text-gray-300">Leadership development sessions and strategic planning workshops.</p>
+                  <p className="text-sm text-white/90">Leadership development sessions and strategic planning workshops.</p>
                 </div>
-                <div className="p-4 bg-gray-800 rounded-lg border border-gray-700">
+                <div className="p-4 rounded-lg border" style={{ backgroundColor: '#4B3A34', borderColor: '#4B3A34' }}>
                   <h4 className="font-semibold mb-2 text-white">Private Briefings</h4>
-                  <p className="text-sm text-gray-300">Intimate sessions for executive teams and decision-makers.</p>
+                  <p className="text-sm text-white/90">Intimate sessions for executive teams and decision-makers.</p>
                 </div>
               </div>
             </div>
 
-            <div className="pt-4 border-t border-gray-700">
-              <p className="text-gray-300 text-sm">
+            <div className="pt-4 border-t border-gray-200">
+              <p className="text-gray-700 text-sm">
                 <strong>Impact:</strong> Each speaking engagement is designed to move audiences from inspiration to action, with clear takeaways and actionable strategies that drive meaningful change.
               </p>
             </div>
           </div>
         </CardContent>
 
-        <div className="border-t border-gray-700 px-8 py-6 flex justify-end bg-black">
+        <div className="border-t border-gray-200 px-8 py-6 flex justify-end bg-white">
           <Button 
             onClick={closeDialog}
             variant="ghost"
             size="icon"
-            className="text-white hover:bg-white/20"
+            className="text-gray-600 hover:text-gray-900"
           >
             <X className="h-5 w-5" />
           </Button>
