@@ -541,22 +541,22 @@ export default function Home() {
               {
                 title: 'Business Strategy & Growth Advisory',
                 description: 'Strategic planning and growth solutions tailored to your business objectives.',
-                image: '/images/aaaimage.jpg'
+                image: '/consulting-section/bs.png'
               },
               {
                 title: 'Policy & Government Relations',
                 description: 'Expert guidance in mining, energy, and procurement sectors.',
-                image: '/images/aaaimage.jpg'
+                image: '/consulting-section/pg.png'
               },
               {
                 title: 'Leadership Branding & Executive Positioning',
                 description: 'Elevate your leadership presence and strategic positioning.',
-                image: '/images/aaaimage.jpg'
+                image: '/consulting-section/lb.png'
               },
               {
                 title: 'Social Impact & Program Design',
                 description: 'Design and implement programs that create meaningful change.',
-                image: '/images/aaaimage.jpg'
+                image: '/consulting-section/si.png'
               }
             ].map((service, index) => (
               <div key={index} className="aspect-square">
