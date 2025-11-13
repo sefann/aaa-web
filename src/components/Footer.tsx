@@ -14,6 +14,15 @@ export default function Footer() {
         <div className="grid lg:grid-cols-3 gap-6 items-start">
           {/* Brand Section */}
           <div>
+            <div className="mb-4">
+              <Image
+                src="/images/logo-footer.svg"
+                alt="Aisha Abdullahi Adamu Logo"
+                width={200}
+                height={60}
+                className="h-auto"
+              />
+            </div>
             <p className="text-gray-300 leading-relaxed mb-4">
               Empowering communities through business leadership and humanitarian work. 
               Making a positive impact in Nigeria and beyond.
@@ -21,15 +30,11 @@ export default function Footer() {
             <Button 
               asChild 
               size="lg"
-              className="bg-white hover:bg-gray-100 text-black font-semibold px-6 py-3 transition-all duration-300 hover:scale-105 hover:shadow-lg animate-pulse"
+              className="bg-white hover:bg-gray-100 text-black font-semibold px-6 py-3 transition-all duration-300 hover:scale-105 hover:shadow-lg"
             >
-              <a 
-                href="https://thechildrightsfoundation.org" 
-                target="_blank" 
-                rel="noopener noreferrer"
-              >
-                Join ChildRightsFoundation
-              </a>
+              <Link href="/university-tour">
+                The CRF University Tour
+              </Link>
             </Button>
           </div>
 
@@ -114,17 +119,41 @@ export default function Footer() {
 
         {/* Bottom Section */}
         <div 
-          className="border-t border-gray-700 mt-6 pt-4 flex flex-col md:flex-row justify-between items-center"
+          className="border-t border-gray-700 mt-6 pt-4"
         >
-          <div className="text-gray-400 text-sm mb-4 md:mb-0">
-            <p>All rights reserved ©2024</p>
+          <div className="flex flex-wrap justify-center gap-4 mb-4">
+            <Link 
+              href="/terms-of-service"
+              className="text-gray-400 hover:text-white transition-colors duration-300 text-sm"
+            >
+              Terms of Service
+            </Link>
+            <span className="text-gray-600">|</span>
+            <Link 
+              href="/privacy-policy"
+              className="text-gray-400 hover:text-white transition-colors duration-300 text-sm"
+            >
+              Privacy Policy
+            </Link>
+            <span className="text-gray-600">|</span>
+            <Link 
+              href="/refund-policy"
+              className="text-gray-400 hover:text-white transition-colors duration-300 text-sm"
+            >
+              Refund Policy
+            </Link>
           </div>
-          <div className="text-gray-400 text-sm text-center md:text-right mb-4 md:mb-0">
-            <WeatherWidget />
-          </div>
-          <div className="text-gray-400 text-sm text-center md:text-right">
-            <p className="mb-2">Have a lovely day! ✨</p>
-            <p>Built with ❤️ for Aisha Abdullahi Adamu</p>
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="text-gray-400 text-sm mb-4 md:mb-0">
+              <p>All rights reserved ©2024</p>
+            </div>
+            <div className="text-gray-400 text-sm text-center md:text-right mb-4 md:mb-0">
+              <WeatherWidget />
+            </div>
+            <div className="text-gray-400 text-sm text-center md:text-right">
+              <p className="mb-2">Have a lovely day! ✨</p>
+              <p>Built with ❤️ for Aisha Abdullahi Adamu</p>
+            </div>
           </div>
         </div>
       </div>

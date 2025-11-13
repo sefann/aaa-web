@@ -8,9 +8,9 @@ export const profile = {
   avatar: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%233b82f6'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial, sans-serif' font-size='120' font-weight='bold' fill='white'%3EAA%3C/text%3E%3C/svg%3E?v=1",
   resume: "/resume/aisha-abdullahi-adamu-resume.pdf",
   social: {
-    linkedin: "https://linkedin.com/in/aishaabdullahiadamu",
-    twitter: "https://twitter.com/aishaabdullahi",
-    instagram: "https://instagram.com/aishaabdullahiadamu",
+    linkedin: "https://www.linkedin.com/in/aisha-abdullahi-adamu-253906299/",
+    twitter: "https://x.com/yasmiinatu?s=11",
+    instagram: "https://www.instagram.com/yasmiinatu?igsh=MThrdWNuYXNkbzBqeg==",
   },
   skills: [
     {

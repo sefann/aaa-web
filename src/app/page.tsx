@@ -24,6 +24,49 @@ const typewriterTexts = [
   'A Vision for Impact'
 ]
 
+function CountUp({ end, duration = 2000 }: { end: number; duration?: number }) {
+  const [count, setCount] = useState(0)
+  const [hasAnimated, setHasAnimated] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimated) {
+            setHasAnimated(true)
+            let startTime: number | null = null
+            const animate = (currentTime: number) => {
+              if (startTime === null) startTime = currentTime
+              const progress = Math.min((currentTime - startTime) / duration, 1)
+              setCount(Math.floor(progress * end))
+              if (progress < 1) {
+                requestAnimationFrame(animate)
+              } else {
+                setCount(end)
+              }
+            }
+            requestAnimationFrame(animate)
+          }
+        })
+      },
+      { threshold: 0.5 }
+    )
+
+    const section = document.getElementById('count-section')
+    if (section) {
+      observer.observe(section)
+    }
+
+    return () => {
+      if (section) {
+        observer.unobserve(section)
+      }
+    }
+  }, [end, duration, hasAnimated])
+
+  return <>{count}+</>
+}
+
 function TypewriterText() {
   const [currentTextIndex, setCurrentTextIndex] = useState(0)
   const [currentText, setCurrentText] = useState('')
@@ -380,104 +423,181 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Authority & Impact Grid */}
-      <section className="section-padding bg-muted/30">
+      {/* Count Section */}
+      <section id="count-section" className="py-8 md:py-12 text-primary-foreground" style={{ backgroundColor: '#171f6d' }}>
         <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="heading-secondary mb-4">Results, Not Noise</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Measured impact across rooms, regions, and real lives.
-            </p>
-          </div>
-
-          <div className="grid gap-8 md:grid-cols-2">
-            <Card className="card-hover h-full">
-              <CardHeader>
-                <CardTitle>Awards &amp; Recognitions</CardTitle>
-              </CardHeader>
-              <CardContent className="flex flex-col gap-4">
-                <div className="text-4xl font-semibold text-primary">10+</div>
-                <CardDescription className="leading-relaxed">
-                  Honours from governments, global enterprise networks, and women-in-leadership institutions.
-                </CardDescription>
-                <Button variant="outline" size="sm" className="w-fit px-6">
-                  View Highlight Reel
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="card-hover h-full">
-              <CardHeader>
-                <CardTitle>Certifications</CardTitle>
-              </CardHeader>
-              <CardContent className="flex flex-col gap-4">
-                <div className="text-4xl font-semibold text-primary">15+</div>
-                <CardDescription className="leading-relaxed">
-                  Accredited trainings in leadership, policy design, humanitarian response, and strategic communication.
-                </CardDescription>
-                <Button variant="outline" size="sm" className="w-fit px-6">
-                  Browse Credentials
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="card-hover h-full">
-              <CardHeader>
-                <CardTitle>Speaking Engagements</CardTitle>
-              </CardHeader>
-              <CardContent className="flex flex-col gap-4">
-                <div className="text-4xl font-semibold text-primary">70+</div>
-                  <CardDescription className="leading-relaxed">
-                    Stages from state house briefings to global summits, each one moved to action.
-                </CardDescription>
-                <Button variant="outline" size="sm" className="w-fit px-6">
-                  Explore Clips &amp; Logos
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="card-hover h-full">
-              <CardHeader>
-                <CardTitle>Communities Served</CardTitle>
-              </CardHeader>
-              <CardContent className="flex flex-col gap-4">
-                <div className="text-4xl font-semibold text-primary">30+</div>
-                <CardDescription className="leading-relaxed">
-                  Grassroots communities, policy circles, and networks uplifted through programs and partnerships.
-                </CardDescription>
-                <Button variant="outline" size="sm" className="w-fit px-6">
-                  View Map &amp; Timeline
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </CardContent>
-            </Card>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-white mb-1">
+                <CountUp end={10} />
+              </div>
+              <div className="text-white/80 text-xs md:text-sm">Awards & Recognitions</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-white mb-1">
+                <CountUp end={15} />
+              </div>
+              <div className="text-white/80 text-xs md:text-sm">Certifications</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-white mb-1">
+                <CountUp end={70} />
+              </div>
+              <div className="text-white/80 text-xs md:text-sm">Speaking Engagements</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-white mb-1">
+                <CountUp end={30} />
+              </div>
+              <div className="text-white/80 text-xs md:text-sm">Communities Served</div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="section-padding bg-primary text-primary-foreground">
-        <div className="container-custom text-center">
-          <div>
-            <h2 className="heading-secondary mb-6">Ready to Connect?</h2>
-            <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
-              Let&apos;s discuss how we can work together to create positive change in communities and drive sustainable development.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="secondary" size="lg" asChild>
-                <Link href="/contact">
-                  Get in Touch
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-              <Button variant="outline" size="lg" asChild className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
-                <Link href="/the-bridge">
-                  Learn About The Bridge
-                </Link>
-              </Button>
+      {/* Testimonials Section */}
+      <section className="section-padding bg-white">
+        <div className="container-custom">
+          <h2 className="heading-secondary mb-12 text-center text-black">WHAT PEOPLE SAY ABOUT AISHA</h2>
+          
+          <div className="overflow-hidden">
+            <div className="flex animate-scroll">
+              {/* Duplicate testimonials for seamless loop */}
+              {[
+                {
+                  image: '/images/aaaimage.jpg',
+                  quote: 'Aisha is an exceptional leader who brings strategic thinking and authentic storytelling to every engagement.',
+                  name: 'TESTIMONIAL AUTHOR 1',
+                  title: 'Title and Organization'
+                },
+                {
+                  image: '/images/aaaimage.jpg',
+                  quote: 'Aisha\'s ability to connect with diverse audiences through powerful messages and actionable insights is remarkable.',
+                  name: 'TESTIMONIAL AUTHOR 2',
+                  title: 'Title and Organization'
+                },
+                {
+                  image: '/images/aaaimage.jpg',
+                  quote: 'Working with Aisha has been transformative. Her strategic depth and emotional resonance move rooms to action.',
+                  name: 'TESTIMONIAL AUTHOR 3',
+                  title: 'Title and Organization'
+                },
+                {
+                  image: '/images/aaaimage.jpg',
+                  quote: 'Aisha represents the epitome of leadership, combining business excellence with genuine humanitarian impact.',
+                  name: 'TESTIMONIAL AUTHOR 4',
+                  title: 'Title and Organization'
+                },
+                {
+                  image: '/images/aaaimage.jpg',
+                  quote: 'Aisha\'s vision and dedication to creating positive change in communities is truly inspiring and impactful.',
+                  name: 'TESTIMONIAL AUTHOR 5',
+                  title: 'Title and Organization'
+                },
+                {
+                  image: '/images/aaaimage.jpg',
+                  quote: 'Through her work, Aisha demonstrates what it means to lead with both strategic acumen and heartfelt compassion.',
+                  name: 'TESTIMONIAL AUTHOR 6',
+                  title: 'Title and Organization'
+                },
+                {
+                  image: '/images/aaaimage.jpg',
+                  quote: 'Aisha\'s expertise in policy, strategy, and social impact makes her an invaluable voice in today\'s leadership landscape.',
+                  name: 'TESTIMONIAL AUTHOR 7',
+                  title: 'Title and Organization'
+                }
+              ].map((testimonial, index) => (
+                <div key={`testimonial-${index}`} className="flex-shrink-0 w-72 flex flex-col group cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+                  {/* Portrait Image */}
+                  <div className="relative w-full h-56 mb-0 overflow-hidden">
+                    <Image
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      fill
+                      className="object-cover grayscale"
+                    />
+                  </div>
+                  
+                  {/* Quote Section - Dark Background */}
+                  <div className="bg-gray-900 p-6 flex-1">
+                    <p className="text-white text-sm leading-relaxed">&quot;{testimonial.quote}&quot;</p>
+                  </div>
+                  
+                  {/* Name Section - Light Beige Background */}
+                  <div className="bg-[#f8f6f3] p-4">
+                    <h3 className="text-black font-bold text-sm uppercase mb-1">{testimonial.name}</h3>
+                    <p className="text-black text-xs">{testimonial.title}</p>
+                  </div>
+                </div>
+              ))}
+              {/* Duplicate for seamless loop */}
+              {[
+                {
+                  image: '/images/aaaimage.jpg',
+                  quote: 'Aisha is an exceptional leader who brings strategic thinking and authentic storytelling to every engagement.',
+                  name: 'TESTIMONIAL AUTHOR 1',
+                  title: 'Title and Organization'
+                },
+                {
+                  image: '/images/aaaimage.jpg',
+                  quote: 'Aisha\'s ability to connect with diverse audiences through powerful messages and actionable insights is remarkable.',
+                  name: 'TESTIMONIAL AUTHOR 2',
+                  title: 'Title and Organization'
+                },
+                {
+                  image: '/images/aaaimage.jpg',
+                  quote: 'Working with Aisha has been transformative. Her strategic depth and emotional resonance move rooms to action.',
+                  name: 'TESTIMONIAL AUTHOR 3',
+                  title: 'Title and Organization'
+                },
+                {
+                  image: '/images/aaaimage.jpg',
+                  quote: 'Aisha represents the epitome of leadership, combining business excellence with genuine humanitarian impact.',
+                  name: 'TESTIMONIAL AUTHOR 4',
+                  title: 'Title and Organization'
+                },
+                {
+                  image: '/images/aaaimage.jpg',
+                  quote: 'Aisha\'s vision and dedication to creating positive change in communities is truly inspiring and impactful.',
+                  name: 'TESTIMONIAL AUTHOR 5',
+                  title: 'Title and Organization'
+                },
+                {
+                  image: '/images/aaaimage.jpg',
+                  quote: 'Through her work, Aisha demonstrates what it means to lead with both strategic acumen and heartfelt compassion.',
+                  name: 'TESTIMONIAL AUTHOR 6',
+                  title: 'Title and Organization'
+                },
+                {
+                  image: '/images/aaaimage.jpg',
+                  quote: 'Aisha\'s expertise in policy, strategy, and social impact makes her an invaluable voice in today\'s leadership landscape.',
+                  name: 'TESTIMONIAL AUTHOR 7',
+                  title: 'Title and Organization'
+                }
+              ].map((testimonial, index) => (
+                <div key={`testimonial-duplicate-${index}`} className="flex-shrink-0 w-72 flex flex-col group cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+                  {/* Portrait Image */}
+                  <div className="relative w-full h-56 mb-0 overflow-hidden">
+                    <Image
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      fill
+                      className="object-cover grayscale"
+                    />
+                  </div>
+                  
+                  {/* Quote Section - Dark Background */}
+                  <div className="bg-gray-900 p-6 flex-1">
+                    <p className="text-white text-sm leading-relaxed">&quot;{testimonial.quote}&quot;</p>
+                  </div>
+                  
+                  {/* Name Section - Light Beige Background */}
+                  <div className="bg-[#f8f6f3] p-4">
+                    <h3 className="text-black font-bold text-sm uppercase mb-1">{testimonial.name}</h3>
+                    <p className="text-black text-xs">{testimonial.title}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
