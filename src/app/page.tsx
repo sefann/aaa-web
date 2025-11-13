@@ -21,7 +21,8 @@ const typewriterTexts = [
   'Leading with Heart',
   'Humanitarian',
   'A Voice for Change',
-  'A Vision for Impact'
+  'A Vision for Impact',
+  'Entrepreneur'
 ]
 
 function CountUp({ end, duration = 2000 }: { end: number; duration?: number }) {
@@ -530,7 +531,7 @@ export default function Home() {
         </div>
         <div className="container-custom relative z-10">
           <div className="text-center mb-8">
-            <h2 className="heading-secondary mb-4 text-white">AAA Consulting & Strategy</h2>
+            <h2 className="heading-secondary mb-4 text-white">Consulting & Strategy</h2>
             <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
               Through <Link href="https://pathmarkadvisory.com/" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors underline">Pathmark Advisory</Link>, Aisha provides high-level business and policy strategy at the intersection of governance, industry, and social impact.
             </p>

@@ -44,9 +44,9 @@ export function ConsultingStrategyDialog({ open, onOpenChange }: ConsultingStrat
       >
         <CardHeader className="flex flex-row items-start justify-between space-y-0 bg-white">
           <div>
-            <CardTitle className="text-2xl text-gray-900">AAA Consulting &amp; Strategy</CardTitle>
+            <CardTitle className="text-2xl text-gray-900">Consulting &amp; Strategy</CardTitle>
             <CardDescription className="text-gray-700">
-              Through Pathmark Advisory and AAA Consulting, Aisha provides high-level business and policy strategy at the
+              Through Pathmark Advisory, Aisha provides high-level business and policy strategy at the
               intersection of governance, industry, and social impact.
             </CardDescription>
           </div>
