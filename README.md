@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Aisha Abdullahi Adamu - Personal Portfolio Website
 
 A modern, responsive personal portfolio website for Aisha Abdullahi Adamu, a Business Executive and Humanitarian leader. Built with Next.js 14, TypeScript, Tailwind CSS, and Framer Motion.
@@ -256,7 +255,3 @@ For questions or support, please contact:
 ---
 
 **Built with ❤️ for Aisha Abdullahi Adamu**
-=======
-# aaa-web
-Personal portfolio/website for Aisha Adamu
->>>>>>> 8186e270ec7f4fa5e564772a1971d49adb4cc22b

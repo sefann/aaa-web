@@ -36,21 +36,23 @@ export function PublicSpeakerDialog({ open, onOpenChange }: PublicSpeakerDialogP
         className="relative z-10 w-full max-w-4xl shadow-2xl flex flex-col max-h-[90vh] bg-white border-gray-200"
         onClick={(event) => event.stopPropagation()}
       >
-        <CardHeader className="relative px-8 pt-8 pb-6" style={{ backgroundColor: '#4B3A34', color: 'white' }}>
-          <div className="flex flex-row items-start justify-between gap-6">
-            <div className="flex-1">
+        <CardHeader className="relative px-0 pt-0 pb-0 overflow-hidden rounded-t-lg">
+          {/* Banner Image */}
+          <div className="relative w-full h-96 md:h-[28rem] rounded-t-lg overflow-hidden">
+            <Image
+              src="/images/leadroom.JPG"
+              alt="Aisha Abdullahi Adamu - Public Speaker Banner"
+              fill
+              className="object-cover"
+            />
+          </div>
+          {/* Content Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 flex items-end rounded-t-lg">
+            <div className="px-8 pb-8 pt-4 w-full">
               <CardTitle className="text-3xl mb-3 text-white">Aisha as a Public Speaker</CardTitle>
               <CardDescription className="text-base text-white/90">
                 A recognized voice shaping public discourse and policy through powerful storytelling and strategic insights.
               </CardDescription>
-            </div>
-            <div className="relative w-32 h-32 md:w-40 md:h-40 flex-shrink-0">
-              <Image
-                src="/images/speak.jpg"
-                alt="Aisha Abdullahi Adamu - Public Speaker"
-                fill
-                className="object-cover rounded-lg"
-              />
             </div>
           </div>
         </CardHeader>

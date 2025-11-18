@@ -435,7 +435,7 @@ export default function Home() {
         <div className="bg-black py-4">
           <div className="w-full">
             <div className="flex">
-              {['Public Figure', 'Author', 'Strategist', 'Humanitarian', 'Speaker', 'Leader'].map((label, index) => (
+              {['Public Figure', 'Author', 'Strategist', 'Humanitarian', 'Speaker', 'Entrepreneur'].map((label, index) => (
                 <div key={label} className="flex-1 text-center">
                   <p className="text-white text-sm font-medium">{label}</p>
                 </div>
@@ -450,32 +450,32 @@ export default function Home() {
             {[
               { 
                 role: 'Public Figure', 
-                image: '/images/aaaimage.jpg',
+                image: '/images/public-figure.JPG',
                 writeup: 'A recognized voice shaping public discourse and policy.'
               },
               { 
                 role: 'Author', 
-                image: '/images/aaaimage.jpg',
+                image: '/images/author.JPG',
                 writeup: 'Sharing insights through written words and published works.'
               },
               { 
                 role: 'Strategist', 
-                image: '/images/aaaimage.jpg',
+                image: '/images/strategist.jpg',
                 writeup: 'Crafting visionary strategies that drive meaningful change.'
               },
               { 
                 role: 'Humanitarian', 
-                image: '/images/aaaimage.jpg',
+                image: '/images/humaniterian.JPG',
                 writeup: 'Dedicated to uplifting communities and transforming lives.'
               },
               { 
                 role: 'Speaker', 
-                image: '/images/aaaimage.jpg',
+                image: '/images/speaker.JPG',
                 writeup: 'Inspiring audiences with powerful messages and stories.'
               },
               { 
-                role: 'Leader', 
-                image: '/images/aaaimage.jpg',
+                role: 'Entrepreneur', 
+                image: '/images/enterpreneur.jpg',
                 writeup: 'Guiding teams and organizations toward excellence.'
               }
             ].map((item, index) => (

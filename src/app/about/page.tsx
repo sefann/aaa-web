@@ -100,7 +100,18 @@ From foundation to chandelier, searchees globally for the world's most renowned 
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative pt-0.5 pb-8 md:pt-0.5 md:pb-16 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-primary/5"></div>
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/about-banner.JPG"
+            alt="About Background"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+        {/* Black Overlay */}
+        <div className="absolute inset-0 bg-black/60"></div>
         
         <div className="container-custom relative z-10">
 
@@ -108,8 +119,8 @@ From foundation to chandelier, searchees globally for the world's most renowned 
             <div>
               <div className="relative w-full">
                 <Image
-                  src="/images/aa-banner.svg"
-                  alt="About Banner"
+                  src="/images/aaa-about.jpg"
+                  alt="Aisha Abdullahi Adamu"
                   width={600}
                   height={400}
                   className="w-full h-auto rounded-lg"
@@ -126,15 +137,15 @@ From foundation to chandelier, searchees globally for the world's most renowned 
                   <span className="text-white">About </span>
                   <span className="text-primary">Aisha Abdullahi Adamu</span>
                 </h2>
-                <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                <p className="text-lg text-white/90 leading-relaxed mb-6">
                   Aisha Abdullahi Adamu is a distinguished Business Executive and Humanitarian dedicated to creating positive change in communities. With a passion for empowering others and driving sustainable development, Aisha leads initiatives that bridge the gap between business excellence and social impact.
                 </p>
                 
                 <h3 className="text-xl font-semibold text-primary mb-4">Executive Director, New Age Group</h3>
-                <p className="text-muted-foreground leading-relaxed mb-4">
+                <p className="text-white/90 leading-relaxed mb-4">
                   Honored to serve as the Executive Director of New Age Group, a distinguished conglomerate with significant interests in Agriculture, Trading, and Oil and Gas sectors.
                 </p>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-white/90 leading-relaxed">
                   My professional journey is a tapestry woven with threads of commitment to excellence and a relentless pursuit of innovation. It speaks volumes about my expertise in business management and strategic leadership. Join me on this transformative journey as we continue to chart new territories and redefine industry standards.
                 </p>
               </div>

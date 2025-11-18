@@ -22,8 +22,8 @@ export default function LogosSection() {
       {/* Background Image */}
       <div className="absolute inset-0 w-full h-full">
         <Image
-          src="/images/partner.png"
-          alt="Partners Background"
+          src="/images/handshake.png"
+          alt="Handshake Background"
           fill
           className="object-cover w-full h-full"
           style={{ 
